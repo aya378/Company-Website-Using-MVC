@@ -1,0 +1,127 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    
+    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+      <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .container-fluid {
+            flex: 1;
+        }
+     .footer {
+  padding: 20px;
+  margin-top:10px;
+        }
+    .list-unstyled a {
+  text-decoration: none;
+               }
+    .navbar-nav {
+  padding-right: 20px; 
+    }
+    </style>
+
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="navbar navbar-expand-lg bg-secondary">
+
+                <a class="navbar-brand navbar-nav text-light " href="#">Portfolio</a>
+                <a class="navbar-brand navbar-nav text-light " href="#">Home</a>
+                <a class="navbar-brand navbar-nav text-light " href="#">About</a>
+                <a class="navbar-brand navbar-nav text-light " href="#">Gallery</a>
+                <a class="navbar-brand navbar-nav text-light mr-auto" href="#">Contact</a>
+                <a class="navbar-brand text-light float-end ml-auto" href="#">Login</a>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-3">
+                <div class="d-flex flex-column flex-shrink-0 p-3 bg-light">
+                    <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
+                        <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
+                        <span class="fs-4">@RenderSection("STitle", required: false)</span>
+                    </a>
+                    
+                </div>
+            </div>
+            <div class="col-9">@RenderBody()</div>
+        </div>
+    </div>
+    <div class="container-fluid text-white bg-dark">
+        <div class="row">
+            <div class="col-md-3">
+                <h5>Information</h5>
+                <p>123 Main Street, City, Country</p>
+                <p>Email: ayagouda153@gmail.com</p>
+                <p>Phone: 01142361079</p>
+            </div>
+
+            <div class="col-md-3">
+                <h5>About Us</h5>
+                <p>Hello this is our Page </p>
+            </div>
+
+            <div class="col-md-3">
+                <h5>Links</h5>
+                <ul class="list-unstyled">
+                    <li><a class="text-white" href="#">Home</a></li>
+                    <li><a class="text-white" href="#">About</a></li>
+                    <li><a class="text-white" href="#">Services</a></li>
+                    <li><a class="text-white" href="#">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3">
+                <h5>Contact Us</h5>
+
+                <div class="footer-section social">
+                    <h2>Follow Us</h2>
+                    <a href="https://www.facebook.com/login/" target="_blank">
+                        <i class="fab fa-facebook"
+                           class="btn btn-secondary m-4"
+                           data-bs-toggle="tooltip"
+                           data-bs-placement="left"
+                           data-bs-title="Facebook"></i>
+                    </a>
+
+                    <a href="https://twitter.com/login" target="_blank">
+                        <i class="fab fa-twitter"
+                           class="btn btn-secondary"
+                           data-bs-toggle="tooltip"
+                           data-bs-placement="bottom"
+                           data-bs-title="Twitter"></i>
+                    </a>
+
+                    <a href="https://www.instagram.com/accounts/login/ " target="_blank">
+                        <i class="fab fa-instagram"
+                           class="btn btn-secondary"
+                           data-bs-toggle="tooltip"
+                           data-bs-placement="right"
+                           data-bs-title="Instagram"></i>
+                    </a>
+
+                </div>
+            </div>
+        </div>
+        <footer class="footer text-center">
+            <div class="container">
+                &copy; 2024 Aya Gouda
+            </div>
+        </footer>
+    </div>
+</body>
+</html>

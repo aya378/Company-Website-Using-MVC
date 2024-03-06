@@ -1,0 +1,100 @@
+﻿@model List<dynamic>
+
+<script>
+    function showEmployeeDetails() {
+        var selectedEmployee = document.getElementById('Selectemployee').value;
+        var rows = document.querySelectorAll('.employeeRow');
+
+        rows.forEach(function (row) {
+            var employeeName = row.querySelector('td:first-child').innerText;
+            if (employeeName === selectedEmployee) {
+                row.style.display = 'table-row';
+            }
+            else {
+                row.style.display = 'none';
+            }
+        });
+    }
+</script>
+<select id="Selectemployee" onchange="showEmployeeDetails()">
+    <option value="">Select an employee</option>
+    @foreach (var work in Model)
+    {
+        <option value="@work.EmployeeName">@work.EmployeeName</option>
+    }
+</select>
+<br /><br />
+
+<style>
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    th, td {
+        border: 1px solid black;
+        padding: 10px;
+        text-align: left;
+    }
+
+    th {
+        background-color: #f2f2f2;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+
+    .btn {
+        padding: 10px 20px;
+        border-radius: 5px;
+    }
+
+    .log {
+        float: right;
+    }
+</style>
+<h2>All Employees with Projects</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>Employee Name</th>
+            <th>Project Name(s)</th>
+            <th>Hours Worked</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var work in Model)
+        {
+            <tr class="employeeRow">
+                <td>@work.EmployeeName</td>
+                <td>
+                    @foreach (var project in work.Projects)
+                    {
+                        @project
+                        <br />
+                    }
+                </td>
+                <td style="color:@ViewData[$"color_{work.Projects}"]">
+                    @for(int i = 0; i < work.Hours.Count; i++)
+                    {
+                        <span style="color:@(ViewData[$"color_{work.Projects[i]}"])">@work.Hours[i]</span>
+                        <br />
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<br />
+
+<a href="/WorksFor/Add" class="btn btn-success">
+    Add
+</a>
+<a href="/WorksFor/EditEmployeeProjects" class="btn btn-success">
+    Edit
+</a>
+<a href="/employee/index" class="btn btn-primary">
+    Back To List
+</a>

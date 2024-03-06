@@ -1,0 +1,35 @@
+﻿@model Department
+@{
+    SelectList list = new SelectList(ViewBag.nomanager, "Id", "fname");
+}
+<div class="container">
+    <form id="contactForm" asp-action="addDB" asp-controller="Department" class="mt-4">
+
+        <div class="mb-3">
+            <label asp-for="Name" class="form-label">Department Name</label>
+            <input id="name" name="name" type="text" class="form-control" />
+        </div>
+
+
+        <div class="mb-3">
+            <label asp-for="startdate" class="form-label">Start Date</label>
+            <input asp-for="startdate" type="date" class="form-control" />
+        </div>
+
+       
+        <div class="mb-3">
+            <label asp-for="MGRssn" class="form-label">Employees</label>
+            <br /><br />
+            <select asp-for="MGRssn" class="form-select" asp-items="list">
+                
+            </select>
+        </div>
+      
+
+
+        <button type="submit" class="btn btn-success">Add</button>
+
+    </form>
+</div>
+<br />
+<a href="/project/index">Back To List</a>

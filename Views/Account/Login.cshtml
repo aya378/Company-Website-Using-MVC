@@ -1,0 +1,24 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@section Stitle{
+    Login to your Account
+}
+<div class="container">
+    <form id="contactForm" action="/Account/LoginDB" class="mt-4">
+
+        <div class="mb-3">
+            <label for="name" class="form-label">Name</label>
+            <input id="name" name="name" type="text" class="form-control"  />
+        </div>
+
+        <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input id="password" name="password" type="password" class="form-control"  />
+        </div>
+
+        <button type="submit" class="btn btn-primary">Login</button>
+    </form>
+</div>

@@ -1,0 +1,64 @@
+﻿@model List<Work_for.works_for>
+@section STitle {
+    <h3>@Model.FirstOrDefault()?.employee.fname 's Projects</h3>
+}
+<style>
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    th, td {
+        border: 1px solid black;
+        padding: 10px;
+        text-align: left;
+    }
+
+    th {
+        background-color: #f2f2f2;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+
+    .btn {
+        padding: 10px 20px;
+        border-radius: 5px;
+    }
+
+    .log {
+        float: right;
+    }
+</style>
+
+
+@if (Model == null)
+{
+    <h2>Project Not Found</h2>
+}
+else
+{
+    <table>
+        <tr>
+            <th>Project Name</th>
+            <th>Project Hours</th>
+
+        </tr>
+        
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.project.pname</td>
+                @* <td style="color: @(item.houres < 5 ? "red" : "green")">@item.houres</td> *@
+                <td style="color:@ViewData[$"color_{item.essn}_{item.pnum}"]">@item.houres</td>
+            </tr>
+        }
+    </table>
+}
+
+
+<br />
+<a href="/employee/index" class="btn btn-primary">
+    Back To List
+</a>

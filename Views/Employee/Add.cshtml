@@ -1,0 +1,64 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model EmployeeVM
+<form asp-action="Add" asp-controller="Employee" method="post" class="mt-4">
+    <div asp-validation-summary="ModelOnly"></div>
+
+    <div class="mb-3">
+        <label asp-for="Fname" class="form-label"></label>
+        <input asp-for="Fname" type="text" class="form-control" />
+        <span asp-validation-for="Fname" class="text-danger"></span>
+    </div>
+
+
+    <div class="mb-3">
+        <label asp-for="Lname" class="form-label"></label>
+        <input asp-for="Lname" class="form-control" />
+        <span asp-validation-for="Lname" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Address" class="form-label"></label>
+        <input asp-for="Address"  class="form-control" />
+        <span asp-validation-for="Address" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Salary" class="form-label"></label>
+        <input asp-for="Salary"  class="form-control" />
+        <span asp-validation-for="Salary" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Password" class="form-label"></label>
+        <input asp-for="Password" class="form-control" />
+        <span asp-validation-for="Password" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="ConfirmPassword" class="form-label"></label>
+        <input asp-for="ConfirmPassword" class="form-control" />
+        <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="dept_id" class="form-label">Departments</label>
+        <br /><br />
+        <select asp-for="dept_id" class="form-select" asp-items="Model.departments">
+        </select>
+    </div>
+    <span asp-validation-for="dept_id" class="text-danger"></span>
+
+
+    <button type="submit" class="btn btn-success">Add</button>
+
+</form>
+
+@section Scripts {
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}

@@ -1,0 +1,10 @@
+﻿@model List<Work_for.works_for>
+<form class="mb-3" asp-action="EditHours" asp-controller="WorksFor">
+
+@foreach(var hour in Model)
+{
+    <input value="@hour.pnum" name="id" hidden/>
+<input name="hours" value="@hour.houres" />
+    <button class="updateHourBtn" data-id="@hour.pnum">Update</button>
+}
+</form>

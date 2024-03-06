@@ -1,0 +1,67 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model List<Work_for.works_for>
+<style>
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    th, td {
+        border: 1px solid black;
+        padding: 10px;
+        text-align: left;
+    }
+
+    th {
+        background-color: #f2f2f2;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+
+    .btn {
+        padding: 10px 20px;
+        border-radius: 5px;
+    }
+
+    .log {
+        float: right;
+    }
+</style>
+@section STitle {
+    All Project
+}
+
+<form class="mb-3" method="post" asp-action="EditHours" asp-controller="WorksFor">
+
+    <select class="mb-3" id="empId" name="employeeId" onchange="DisplayProjects(this.value)">
+        <option>Select Employee</option>
+        @foreach (var emp in ViewBag.employeeList)
+        {
+            <option value="@emp.Id">@emp.fname</option>
+        }
+    </select>
+
+    <div class="mb-3" id="Selectedproject">
+
+        @foreach (var proj in ViewBag.projects)
+        {
+            <partial name="_ValidationScriptsPartial" model="proj"></partial>
+        }
+
+        </div>
+
+    </form>
+
+@section Scripts {
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/js/project.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+}

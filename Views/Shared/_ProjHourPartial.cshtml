@@ -1,0 +1,14 @@
+﻿@model List<Work_for.works_for>
+
+<select id="projId" name="projectId" onchange="DisplayHours()">
+    <option>Select a Project</option>
+    @foreach (var project in Model)
+    {
+        <option value="@project.project.Id">@project.project.pname</option>
+    }
+</select>
+<div class="mb-3" id="SelectedprojectHours">
+    
+</div>
+
+

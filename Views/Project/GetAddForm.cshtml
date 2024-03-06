@@ -1,0 +1,43 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<div class="container">
+    <form id="contactForm" action="/Project/GetFormData" class="mt-4">
+    
+    <div class="mb-3">
+        <label for="name" class="form-label">Project Name</label>
+        <input id="name" name="name" type="text" class="form-control" />
+    </div>
+   
+   
+    <div class="mb-3">
+        <label for="location" class="form-label">Project Location</label>
+        <input id="location" name="location" type="text" class="form-control" />
+    </div>
+ 
+    <div class="mb-3">
+        <label for="city" class="form-label">City</label>
+        <input id="city" name="city" type="text" class="form-control" />
+        
+    </div>
+
+    <div class="mb-3">
+            <label for="department" class="form-label">Department</label>
+        <br /><br />
+            <select id="department" name="dept_id" class="form-select">
+            @foreach (Department item in ViewBag.departments)
+            {
+                <option value="@item.Id" selected>@item.Name</option>
+            }
+        </select>
+    </div>
+
+
+        <button type="submit" class="btn btn-success">Add</button>
+
+</form>
+</div>
+<br />
+<a href="/project/index">Back To List</a>

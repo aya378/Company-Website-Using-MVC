@@ -1,0 +1,49 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model Project
+
+
+<div class="container">
+    <form id="contactForm" action="/Project/Update" class="mt-4">
+        <input name="id" hidden value="@Model.Id" />
+
+        <div class="mb-3">
+            <label for="name" class="form-label">Project Name</label>
+            <input id="name" name="name" type="text" class="form-control" value="@Model.pname" />
+        </div>
+
+        <div class="mb-3">
+            <label for="location" class="form-label">Project Location</label>
+            <input id="location" name="location" type="text" class="form-control" value="@Model.plocation" />
+        </div>
+
+        <div class="mb-3">
+            <label for="city" class="form-label">City</label>
+            <input id="city" name="city" type="text" class="form-control" value="@Model.city" />
+        </div>
+
+        <div class="mb-3">
+            <label for="department" class="form-label">Department</label>
+            <select id="department" name="dept_id" class="form-select">
+                @foreach (Department item in ViewBag.departments)
+                {
+                    @if (Model.dnum == item.Id)
+                    {
+                        <option value="@item.Id" selected>@item.Name</option>
+                    }
+                    else
+                    {
+                        <option value="@item.Id">@item.Name</option>
+                    }
+                }
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Update</button>
+    </form>
+</div>
+<br />
+<a href="/project/index" @* class="btn btn-primary mt-3" *@>Back To List</a>

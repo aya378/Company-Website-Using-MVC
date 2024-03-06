@@ -1,0 +1,61 @@
+﻿@model List<dynamic>
+<style>
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    th, td {
+        border: 1px solid black;
+        padding: 10px;
+        text-align: left;
+    }
+
+    th {
+        background-color: #f2f2f2;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+
+    .btn {
+        padding: 10px 20px;
+        border-radius: 5px;
+    }
+
+    .log {
+        float: right;
+    }
+</style>
+<h2>All Employees with Projects</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>Employee Name</th>
+            <th>Project Name(s)</th>
+            <th>Hours Worked</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var work in Model)
+        {
+            <tr>
+                <td>@work.EmployeeName</td>
+                <td>
+                    @foreach (var project in work.Projects)
+                    {
+                        @project
+                        <br />
+                    }
+                </td>
+                <td style="color:@ViewData[$"color_{work.EmployeeName}"]">@work.totalHours</td>
+            </tr>
+        }
+    </tbody>
+</table>
+<br />
+<a href="/employee/index" class="btn btn-primary">
+    Back To List
+</a>

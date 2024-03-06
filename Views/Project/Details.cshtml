@@ -1,0 +1,64 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model Project
+
+<style>
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    th, td {
+        border: 1px solid #ddd;
+        padding: 12px;
+        text-align: left;
+    }
+
+    th {
+        background-color: #f2f2f2;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+</style>
+
+@section STitle {
+    @Model.pname Project Details
+}
+
+@if (Model == null)
+{
+    <h1>Data Not Found</h1>
+}
+else
+{
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Project Details</h5>
+            <table>
+                <tr>
+                    <th>Project Name</th>
+                    <td>@Model.pname</td>
+                </tr>
+                <tr>
+                    <th>Project Location</th>
+                    <td>@Model.plocation</td>
+                </tr>
+                <tr>
+                    <th>City</th>
+                    <td>@Model.city</td>
+                </tr>
+                <tr>
+                    <th>Department</th>
+                    <td>@Model.department.Name</td>
+                </tr>
+            </table>
+            <a href="/project/index" class="btn btn-primary mt-3">Back To List</a>
+        </div>
+    </div>
+}
+

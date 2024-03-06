@@ -1,0 +1,69 @@
+﻿@model Department
+<a href="/project/GetAddForm" type="submit" class="btn btn-success">Add</a>
+<br />
+<br />
+<style>
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    th, td {
+        border: 1px solid black;
+        padding: 10px;
+        text-align: left;
+    }
+
+    th {
+        background-color: #f2f2f2;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+
+    .btn {
+        padding: 10px 20px;
+        border-radius: 5px;
+    }
+
+    .log {
+        float: right;
+    }
+</style>
+@section STitle {
+     Department
+}
+
+@if (Model == null)
+{
+    <h2>Department Not Found</h2>
+}
+else
+{
+    <table>
+        <tr>
+            <th>Department Name</th>
+            <th>Manager</th>
+            <th>Start Date</th>
+            <th>Handle</th>
+        </tr>
+      
+            <tr>
+            <td>@Model.Name</td>
+            <td>@Model.managr.fname</td>
+            <td>@Model.startdate</td>
+                <td>
+                <a href="/project/details/@Model.Id" class="btn btn-success">
+                        Details
+                    </a>
+                <a href="/project/EditFormData/@Model.Id" id="@Model.Id" class="btn btn-success">Update</a>
+                <a href="/project/Delete/@Model.Id" id="@Model.Id">
+                        <i class="bi bi-x-lg"></i>
+                    </a>
+                </td>
+
+            </tr>
+        
+    </table>
+}

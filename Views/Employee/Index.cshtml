@@ -1,0 +1,93 @@
+﻿@model List<Employee>
+@{
+    Layout = "_TempleteLayout";
+}
+@section STitle {
+    All Employees
+}
+<a href="/WorksFor/AllEmployees" class="btn btn-success">
+    Projects With Total
+</a>
+<a href="/WorksFor/EmployeeWithoutTotal" class="btn btn-success">
+    Projects
+</a>
+<a asp-action="Add" asp-controller="Employee" class="btn btn-success">Add</a>
+<br /> <br />
+<style>
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    th, td {
+        border: 1px solid black;
+        padding: 10px;
+        text-align: left;
+    }
+
+    th {
+        background-color: #f2f2f2;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+
+   
+
+       
+</style>
+
+
+@if (Model == null)
+{
+    <h2>Employee Not Found</h2>
+}
+else
+{
+    <table>
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Address</th>
+            <th>Birth Date</th>
+            <th>Salary</th>
+            <th>Supervisor</th>
+            <th>Department</th>
+            <th>Details</th>
+            <th>Projects</th>
+            <th>Total Worked Houres</th>
+            
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.fname</td>
+                <td>@item.lname</td>
+                <td>@item.address</td>
+                <td>@item.bdate</td>
+                <td>@item.salary</td>
+                <td>@item.superssn</td>
+                <td>@item.department.Name</td>
+                
+                <td>
+                    <a href="/employee/details/@item.Id" id="@item.Id" class="btn btn-success">
+                        Details
+                    </a>
+                </td>
+                <td>
+                    <a href="/WorksFor/details/@item.Id" id="@item.Id" class="btn btn-success">
+                        Projects
+                    </a>
+                </td>
+                <td>
+                    <a href="/WorksFor/EmployeeProject/@item.Id" id="@item.Id" class="btn btn-success">
+                        WorkedHours
+                    </a>
+                </td>
+               
+            </tr>
+        }
+    </table>
+}
+

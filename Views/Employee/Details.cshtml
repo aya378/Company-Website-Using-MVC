@@ -1,0 +1,78 @@
+﻿@model Employee
+@{
+    Layout = "_EmpLayout";
+}
+@section STitle {
+    Employee Details
+}
+@{
+    int totalHourse = 0;
+}
+<style>
+    .card {
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 10px;
+        margin: 20px;
+        width: 70%;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        background-color: #f9f9f9;
+    }
+
+    .card-header {
+        background-color: #f2f2f2;
+        padding: 10px;
+        border-bottom: 1px solid #ccc;
+    }
+
+    .card-body {
+        padding: 10px;
+    }
+
+    .project-info {
+        margin-top: 10px;
+    }
+</style>
+
+@if (Model == null)
+{
+    <h1>Data Not Found</h1>
+}
+else
+{
+    <div class="card">
+        <div class="card-header">
+            Employee Details
+        </div>
+        <div class="card-body">
+            <p><strong>First Name:</strong> @Model.fname</p>
+            <p><strong>Last Name:</strong> @Model.lname</p>
+            <p><strong>Address:</strong> @Model.address</p>
+            <p><strong>Birth Date:</strong> @Model.bdate</p>
+            <p><strong>Supervisor:</strong> @Model.superssn</p>
+            <p><strong>Department:</strong> @Model.department.Name</p>
+
+            @foreach (var emp in Model.Works_Fors)
+            {
+                <div class="project-info">
+                   @*  <p><strong>Project Name:</strong> @emp.project.pname</p>
+                    <p>
+                        <strong>Worked Hours:</strong>
+                        <span style="color: @(emp.houres < 5 ? "red" : "green")">@emp.houres</span>
+                    </p> *@
+                    @{
+                        totalHourse += @emp.houres;
+                    }
+                   
+                </div>
+            }
+            <p>
+                <strong>Total Worked Hourse</strong>
+                <span style="color:@(totalHourse<5 ? "red" :"green")">@totalHourse</span>
+            </p>
+
+        </div>
+    </div>
+}
+<a href="/employee/index" class="btn btn-primary">Back To List</a>
+<br /><br />
